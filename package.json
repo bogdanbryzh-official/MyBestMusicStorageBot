@@ -1,0 +1,9 @@
+{
+  "name": "MyBestMusicStorageBot",
+  "version": "1.0.0",
+  "description": "Manager For #MyBestMusicStorage",
+  "main": "index.js",
+  "repository": "https://github.com/bogdanbryzh-official/MyBestMusicStorageBot.git",
+  "author": "Bogdan Bryzh <bogdan.bryzh@gmail.com>",
+  "license": "MIT"
+}
