@@ -1,5 +1,5 @@
 {
-  "name": "MyBestMusicStorageBot",
+  "name": "my-best-music-storage-bot",
   "version": "1.0.0",
   "description": "Manager For #MyBestMusicStorage",
   "main": "index.js",
@@ -12,7 +12,8 @@
     "telegraf": "^3.38.0"
   },
   "scripts": {
-    "start": "nodemon ."
+    "start": "node index",
+    "dev": "nodemon ."
   },
   "prettier": {
     "tabWidth": 2,
