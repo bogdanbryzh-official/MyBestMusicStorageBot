@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&family=Andika+New+Basic:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css"
+      integrity="sha512-O03ntXoVqaGUTAeAmvQ2YSzkCvclZEcPQu1eqloPaHfJ5RuNGiS4l+3duaidD801P50J28EHyonCV06CUlTSag=="
+      crossorigin="anonymous"
+    />
+    <style>
+      :root {
+        --gold: #f2aa4cff;
+        --gold-transparent: #f2aa4c66;
+        --black: #101820ff;
+        --border: 2px solid var(--gold);
+      }
+      *,
+      *::after,
+      *::before {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        background-color: inherit;
+        outline: none;
+        text-decoration: none;
+        color: inherit;
+        transition-duration: 0.1s;
+        transition-timing-function: ease-in-out;
+      }
+      body::-webkit-scrollbar {
+        width: 0.5rem;
+      }
+
+      body::-webkit-scrollbar-track {
+        background-color: var(--black);
+      }
+
+      body::-webkit-scrollbar-thumb {
+        background-image: linear-gradient(
+          to top,
+          var(--gold-transparent),
+          var(--gold),
+          var(--gold-transparent)
+        );
+        border-radius: 0.25rem;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow-x: hidden;
+        font-size: 16px;
+        font-family: 'Andika New Basic', sans-serif;
+        background-color: var(--black);
+        color: var(--gold);
+      }
+      header,
+      main,
+      footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .content {
+        width: 100%;
+        max-width: 1080px;
+        padding: 20px 0;
+      }
+      h1 {
+        font-size: 26px;
+      }
+      input,
+      button {
+        padding: 10px;
+        border: var(--border);
+      }
+      input::placeholder {
+        color: var(--gold);
+      }
+      button {
+        background-color: var(--gold);
+        color: var(--black);
+        font-weight: bold;
+        cursor: pointer;
+      }
+      header .search {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        font-size: 18px;
+        position: relative;
+        z-index: 0;
+      }
+      header .search.focused::after {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: '';
+        top: 5px;
+        left: 5px;
+        border: var(--boder);
+        z-index: -1;
+      }
+      header #search {
+        width: 100%;
+      }
+      header .content {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .header_top {
+        max-width: 100%;
+      }
+      .header_center {
+        height: 100%;
+      }
+      .header_center .content {
+        flex-direction: column;
+      }
+      .header_center .search {
+        margin-top: 20px;
+      }
+
+      @media screen and (max-width: 1200px) {
+        .content {
+          padding: 20px 50px;
+        }
+      }
+
+      @media screen and (max-width: 920px) {
+        header .search {
+          width: 100%;
+        }
+        .header_top .search {
+          margin-top: 20px;
+        }
+        .header_top .content {
+          flex-direction: column;
+        }
+      }
+
+      main {
+        display: none;
+      }
+
+      .header_top + main {
+        display: flex;
+        padding-bottom: 100px;
+      }
+
+      .results {
+        display: grid;
+        grid-gap: 35px;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+
+      .track {
+        border: var(--border);
+        height: 100%;
+        box-shadow: 12px 8px 0 0 var(--gold-transparent);
+        transition-duration: 0.2s;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+      }
+      .track:hover {
+        box-shadow: -5px -7px 0 0 var(--gold-transparent);
+      }
+      .track .cover {
+        width: 100%;
+        min-width: 200px;
+        min-height: 200px;
+        /* background-image: linear-gradient(76deg, var(--gold), #3c095a); */
+      }
+      .track .info {
+        font-family: 'Work Sans', sans-serif;
+        padding: 10px;
+        font-weight: 300;
+        font-size: 20px;
+      }
+
+      .track .title {
+        font-size: 24px;
+        font-weight: 400;
+      }
+      .track .artist {
+        font-weight: 500;
+      }
+      .track .album,
+      .track .year {
+        font-size: 18px;
+      }
+
+      footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header_center">
+      <div class="content">
+        <h1>Search for your favorite songs</h1>
+        <div class="search">
+          <input type="text" id="search" placeholder="Type..." />
+          <button id="btn">Search</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="content">
+        <div id="results" class="results"></div>
+      </div>
+    </main>
+    <footer>
+      <div class="content">
+        &copy; <a href="https://bogdanbryzh.me">bogdanbryzh.me</a>
+      </div>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
+      integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./search.js"></script>
+  </body>
+</html>

@@ -5,5 +5,22 @@
   "main": "index.js",
   "repository": "https://github.com/bogdanbryzh-official/MyBestMusicStorageBot.git",
   "author": "Bogdan Bryzh <bogdan.bryzh@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1",
+    "telegraf": "^3.38.0"
+  },
+  "scripts": {
+    "start": "nodemon ."
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
 }
